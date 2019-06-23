@@ -40,7 +40,39 @@ tabla1$Valor<-gsub("[.]","",tabla1$Valor)
 
 #as.numerico transforma la columna a elementos numericos
 tabla1$Valor<-as.numeric(tabla1$Valor)
-tabla2$Valor<-
+tabla2$Valor<-as.numeric(tabla2$Valor)
+
+#combinando los dos data frame
+#----------------------------------------------------------------------
+#
+dfVariable[whict(dfVariable$Columna=="(loqbuscamos"),]
+
+#graficar barra
+tablaMerge%>%
+  ggplot()
+aes(x=ProductoSupermercado), y=Valor +
+  geom_bar(stat="identity")
+
+#grafico de dispercion-------------------------
+
+#===========Feria chilena del libro================================#
+paginaChilenaDelLibro<-"https://www.feriachilenadellibro.cl/"
+
+paginaChilenaRead<-read_html(paginaChilenaDelLibro)
+paginaChilenaNodesReferencias<-html_nodes(paginaChilenaRead,".product-item-photo")
+#html_attr(paginaChilenaNodesReferencias,"href")
+referencias<-html_attr(paginaChilenaNodesReferencias,"href")
+
+for(refe in referencias){
+    print(refe)
+  lecturaLibro<-read_html(refe)
+  precio<-html_text(html_nodes(lecturaLibro,".price"))
+  print(precio)
+  
+}
+
+
+
 
 
 
